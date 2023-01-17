@@ -11,8 +11,12 @@ type User struct {
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	user := &User{Id: 1, Name: "John Doe"}
-    jsonData, _ := json.Marshal(user)
+	users := []User{
+        {Id: 1, Name: "John"},
+        {Id: 2, Name: "Jane"},
+        {Id: 3, Name: "Bob"},
+    }
+    jsonData, _ := json.Marshal(users)
     
 	w.Header().Set("Content-Type", "application/json")
     w.Write(jsonData)
